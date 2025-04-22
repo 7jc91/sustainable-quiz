@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>اختبار القهوة ☕</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f8f4f0;
+      text-align: center;
+      padding: 20px;
+      direction: rtl;
+    }
+    .question {
+      margin-bottom: 20px;
+    }
+    button {
+      background-color: #6f4e37;
+      color: white;
+      padding: 10px 20px;
+      margin: 5px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #523522;
+    }
+    #result {
+      font-size: 20px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>أي نوع من القهوة يمثل شخصيتك؟</h1>
+
+  <div class="question">
+    <p>1. كيف تبدأ صباحك؟</p>
+    <button onclick="answer('espresso')">بسرعة وبدون تأخير</button>
+    <button onclick="answer('latte')">بهـدوء وتدريجياً</button>
+  </div>
+
+  <div class="question">
+    <p>2. كيف تتعامل مع التوتر؟</p>
+    <button onclick="answer('espresso')">أواجهه مباشرة</button>
+    <button onclick="answer('latte')">أحاول أهدّي نفسي</button>
+  </div>
+
+  <div class="question">
+    <p>3. وش أكثر شي تحبه؟</p>
+    <button onclick="answer('latte')">الهدوء والأجواء</button>
+    <button onclick="answer('espresso')">الحماس والإنجاز</button>
+  </div>
+
+  <div id="result"></div>
+
+  <script>
+    let score = { espresso: 0, latte: 0 };
+    let answered = 0;
+
+    function answer(type) {
+      score[type]++;
+      answered++;
+      if (answered === 3) {
+        showResult();
+      }
+    }
+
+    function showResult() {
+      let resultText = '';
+      if (score.espresso > score.latte) {
+        resultText = "أنت مثل الاسبريسو ☕ – قوي وسريع ومركز!";
+      } else {
+        resultText = "أنت مثل اللاتيه 🎀 – ناعم، هادئ، ومحبوب!";
+      }
+      document.getElementById('result').innerText = resultText;
+    }
+  </script>
+
+</body>
+</html>
